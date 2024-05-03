@@ -13,7 +13,7 @@ public class Game extends Canvas implements Runnable, KeyListener {
     public static int SCALE = 3;
     public World world;
     public static Player player;
-    public List<Enemy> enemies = new ArrayList<Enemy>();
+    public List<Enemy> enemies = new ArrayList<>();
     public Game(){
         this.addKeyListener(this);
         this.setPreferredSize(new Dimension(WIDTH,HEIGTH));
