@@ -10,18 +10,18 @@ import java.util.List;
 public class Game extends Canvas implements Runnable, KeyListener {
 
     public static int WIDTH = 640, HEIGTH = 480;
-    public static int SCALE = 3;
+    public static int SCALE = 1;
     public World world;
     public static Player player;
     public List<Enemy> enemies = new ArrayList<>();
     public Game(){
         this.addKeyListener(this);
-        this.setPreferredSize(new Dimension(WIDTH,HEIGTH));
+        this.setPreferredSize(new Dimension(WIDTH*SCALE,HEIGTH*SCALE));
         new Spritesheet();
         world = new World();
         player = new Player(32,32);
-        enemies.add(new Enemy(32,32));
-        enemies.add(new Enemy(32,64));
+        enemies.add(new Enemy(575,32));
+        enemies.add(new Enemy(575,400));
     }
 
     public void tick(){
@@ -40,6 +40,7 @@ public class Game extends Canvas implements Runnable, KeyListener {
         }
 
         Graphics g = bs.getDrawGraphics();
+
 
         g.setColor(new Color(0,135,13));
         g.fillRect(0, 0, WIDTH*SCALE, HEIGTH*SCALE);
@@ -61,9 +62,9 @@ public class Game extends Canvas implements Runnable, KeyListener {
 
         frame.add(game);
         frame.setTitle("Mini Zelda");
-        frame.setLocationRelativeTo(null);
         frame.pack();
         frame.setResizable(false);
+        frame.setLocationRelativeTo(null);
 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
